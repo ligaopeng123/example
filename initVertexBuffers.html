@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webGl VertexBuffers</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="webGl" width="900px" height="900px" style="width: 900px;height: 900px;"></canvas>
+<script type="module">
+    import {initShaders} from './js/utils.js'
+
+    /**
+     * 顶点着色器
+     * gl_Position 常量 代表是位置  vec4 一个函数 返回一个vec4类型的数据
+     * g1_PointSize 常量 代表是尺寸 float类型
+     * @type {string}
+     */
+    const VSHADER_SOURCE =
+        'attribute vec4 a_Position;' + // 定义a_Position 顶点位置信息
+        'attribute float a_PointSize;' + // 定义a_Position 顶点位置信息
+        'void main() { ' +
+        'gl_Position = a_Position;' +
+        'gl_PointSize = a_PointSize;' +
+        '}';
+    /**
+     * 片元着色器
+     * gl_FragColor 常量 代表颜色 类型为vec4
+     * @type {string}
+     */
+    const FSHADER_SOURCE =
+        'precision mediump float;' + // uniform变量可以指定任意类型的数据 因此需使用精度限定词指定精度 attribute只能指定float
+        'uniform vec4 u_FragColor;' + // 定义a_FragColor 颜色信息
+        'void main() {' +
+        'gl_FragColor = u_FragColor;' +
+        '}';
+
+    function main() {
+        const canvas = document.getElementById('webGl');
+
+        // Get the rendering context for WebGL
+        const gl = canvas.getContext('experimental-webgl ') || canvas.getContext('webgl');
+        if (!gl) {
+            console.log('不支持webGl 请使用谷歌浏览器查看！');
+            return;
+        }
+        if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
+            console.log('着色器初始化失败！');
+            return;
+        }
+        // 获取大小信息
+        const a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize');
+        // 获取颜色信息
+        const a_FragColor = gl.getUniformLocation(gl.program, 'u_FragColor');
+
+        // 将大小信息传递给着色器
+        gl.vertexAttrib1f(a_PointSize, 100.0);
+        // 将颜色信息传递给着色器
+        gl.uniform4f(a_FragColor, 0.1, 0.1, 0.1, 1.0);
+        // 初始化 缓冲区
+        const n = initVertexBuffers(gl);
+        // 清理颜色
+        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        // 清空canvas
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        // 绘制一个点
+        gl.drawArrays(gl.POINTS, 0, n);
+    }
+
+    /**
+     * 缓冲区初始化
+     * @param g1
+     */
+    function initVertexBuffers(gl) {
+        // 创建坐标点 x y 默认z为0 也可添加上
+        const vertices = new Float32Array([0.0, 0.5, 0.0, -0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.0, 0.0]);
+        // 创建缓冲区对象
+        const vertexBuffer = gl.createBuffer();
+        if (!vertexBuffer) {
+            return;
+        }
+        // 将缓冲区对象绑定到目标
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+        // 将缓冲区数据中写入数据
+        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+        // 顶点变量
+        const a_Position = gl.getAttribLocation(gl.program, 'a_Position');
+        // 将缓冲区对象绑定顶点变量
+        gl.vertexAttribPointer(a_Position, 3, gl.FLOAT, false, 0, 0);
+        // 建立连接
+        gl.enableVertexAttribArray(a_Position);
+        return 4;
+    }
+
+    main();
+</script>
+</body>
+</html>
