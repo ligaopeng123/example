@@ -67,7 +67,7 @@
         gl.clearColor(0.0, 0.0, 0.0, 1.0);
         // 清空canvas
         gl.clear(gl.COLOR_BUFFER_BIT);
-        // 绘制一个点
+        // 绘制一个点 // TRIANGLE_STRIP 矩形
         gl.drawArrays(gl.POINTS, 0, n);
     }
 
@@ -77,7 +77,12 @@
      */
     function initVertexBuffers(gl) {
         // 创建坐标点 x y 默认z为0 也可添加上
-        const vertices = new Float32Array([0.0, 0.5, 0.0, -0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.0, 0.0]);
+        const vertices = new Float32Array([
+            -0.5, 0.5, 0.0,
+            -0.5, -0.5, 0.0,
+            0.5, 0.5, 0.0,
+            0.5, -0.5, 0.0
+            ]);
         // 创建缓冲区对象
         const vertexBuffer = gl.createBuffer();
         if (!vertexBuffer) {
