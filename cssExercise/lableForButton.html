@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lableForButton</title>
+    <style>
+        /*模拟bth*/
+        #bth {
+            position: absolute;
+            clip: rect(0px,0px,0px,0px);
+        }
+        #label {
+            display: inline-block;
+            line-height: 20px;
+            padding: 20px;
+            background-color: #7dff59;
+        }
+        #label:hover {
+            background-color: #36ff79;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button id="bth"></button>
+<label id="label" for="bth">bth</label>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>counter</title>
+    <style>
+        p, div {
+            font-size: 24px;
+            font-family: Arial black;
+            color: indianred;
+        }
+
+        .counter {
+            counter-reset: one 0 two 1 three 2;
+            /* 第一次就会进行计数递增 因此初始值为0 显示是1*/
+            counter-increment: one two three;
+        }
+
+        .counter-one:before {
+            content: counter(one, lower-roman) ". ";
+        }
+
+        .counter-two:before {
+            content: counter(two, lower-roman) ". ";
+        }
+
+        .counter-three:before {
+            content: counter(three, lower-roman) ". ";
+        }
+
+        .counters {
+            padding-left: 20px;
+            counter-reset: counters_reset 0;
+
+        }
+
+        .counters-increment:before {
+            counter-increment: counters_reset 1;
+            content: counters(counters_reset, '-') '. ';
+            /*罗马数字*/
+            /*content: counters(counters_reset, '-', lower-roman) '. ';*/
+        }
+    </style>
+</head>
+<body>
+<p>counter</p>
+<p class="counter counter-one">
+    one
+</p>
+
+<p class="counter counter-two">
+    two
+</p>
+<p class="counter counter-three">
+    three
+</p>
+
+<p>counters</p>
+
+<div class="counters">
+    <div class="counters-increment">
+        <div class="counters">
+            <div class="counters-increment">
+                <div class="counters">
+                    <div class="counters-increment"></div>
+                    <div class="counters-increment"></div>
+                    <div class="counters-increment"></div>
+                </div>
+            </div>
+            <div class="counters-increment"></div>
+            <div class="counters-increment">
+                <div class="counters">
+                    <div class="counters-increment"></div>
+                    <div class="counters-increment"></div>
+                    <div class="counters-increment"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="counters-increment">
+        <div class="counters">
+            <div class="counters-increment"></div>
+            <div class="counters-increment"></div>
+            <div class="counters-increment"></div>
+        </div>
+    </div>
+    <div class="counters-increment"></div>
+</div>
+
+<script>
+</script>
+</body>
+</html>
