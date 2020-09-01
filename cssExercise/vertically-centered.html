@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vertically centered</title>
+    <style>
+        #has-height {
+            position: absolute;
+            background-color: #7dff59;
+            top: calc(50% - 100px);
+            left: calc(50% - 150px);
+            height: 200px;
+            width: 300px;
+            /*内联元素水平居中 对应文字居中*/
+            text-align: center;
+            /*已知高度的垂直居中 对应文字居中*/
+            line-height: 200px;
+        }
+        #no-height{
+            background-color: #7dff59;
+            position: absolute;
+            transform: translate(50%, 50%);
+            top:50%;
+            left:50%;
+        }
+        #flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 800px;
+        }
+        #flex > div {
+            background-color: #7dff59;
+            height: 200px;
+            width: 300px;
+            /*内联元素水平居中 对应文字居中*/
+            text-align: center;
+            /*已知高度的垂直居中 对应文字居中*/
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="has-height">-->
+<!--已知宽高垂直居中-->
+<!--</div>-->
+<!--<div id="no-height">-->
+    <!--无宽高垂直居中-->
+<!--</div>-->
+
+<div id="flex">
+    <div>
+        flex垂直居中
+    </div>
+</div>
+</body>
+</html>
