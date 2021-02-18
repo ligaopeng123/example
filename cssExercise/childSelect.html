@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>child选择器</title>
+    <style>
+        .first-last-child > h5:first-child {
+            background: #4dff3a;
+        }
+
+        .first-last-child > h5:last-child {
+            background: #fbffbd;
+        }
+
+        /*奇数*/
+        .nth-child-odd-even > h5:nth-child(odd) {
+            background: #ff353b;
+        }
+
+        /*偶数*/
+        .nth-child-odd-even > h5:nth-child(even) {
+            background: #71bfff;
+        }
+
+        /*(an + b)。描述：表示周期的长度，n 是计数器（从 0 开始），b 是偏移值。*/
+        .nth-child-an-b > h5:nth-child(3n+0) {
+            background: #fffe7d;
+        }
+
+        .child {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .child > div {
+            align-items: center;
+            flex-grow: 1;
+            padding: 0px 24px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="child">
+    <div class="first-last-child">
+        first-child和last-child选择器
+        <h5>第一个段落。</h5>
+        <h5>第二个段落。</h5>
+        <h5>第三个段落。</h5>
+        <h5>第四个段落。</h5>
+        <h5>第五个段落。</h5>
+        <h5>第六个段落。</h5>
+        <h5>第七个段落。</h5>
+        <h5>第八个段落。</h5>
+        <h5>第九个段落。</h5>
+    </div>
+
+    <div class="nth-child-odd-even">
+        nth-child 奇偶选择器
+        <h5>第一个段落。</h5>
+        <h5>第二个段落。</h5>
+        <h5>第三个段落。</h5>
+        <h5>第四个段落。</h5>
+        <h5>第五个段落。</h5>
+        <h5>第六个段落。</h5>
+        <h5>第七个段落。</h5>
+        <h5>第八个段落。</h5>
+        <h5>第九个段落。</h5>
+    </div>
+
+    <div class="nth-child-an-b">
+        nth-child (an + b)选择器
+        <h5>第一个段落。</h5>
+        <h5>第二个段落。</h5>
+        <h5>第三个段落。</h5>
+        <h5>第四个段落。</h5>
+        <h5>第五个段落。</h5>
+        <h5>第六个段落。</h5>
+        <h5>第七个段落。</h5>
+        <h5>第八个段落。</h5>
+        <h5>第九个段落。</h5>
+    </div>
+</div>
+</body>
+</html>
