@@ -37,7 +37,7 @@ person.setInfo = (age, name) => {
 };
 person.add = (x, y) => x;
 
-person.getName = () => this.name;
+person.getName = () => person.name;
 
 
 /**
