@@ -2,6 +2,7 @@
 /bin/electron-chubao-tool/node_modules
 /bin/electron-chubao-tool/out
 /.idea
+.idea
 .project
 .classpath
 .c9/

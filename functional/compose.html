@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="module">
+	import {strTransformPercentage} from './compose.js';
+
+	document.querySelector('#bth').addEventListener('click', fn);
+
+	function fn() {
+		document.querySelector('#value').innerHTML = `${strTransformPercentage(document.querySelector('#str').value)}%`
+	}
+
+</script>
+<input id="str"/>
+<button id="bth">转换</button>
+<p id="value"></p>
+</body>
+</html>
