@@ -1,5 +1,5 @@
 /**
- * compose 函数
+ * pipe 函数
  */
 export const pipe = (...fns: any) => {
 	if (fns.length === 0) return (arg: any) => arg;
