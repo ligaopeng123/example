@@ -4,8 +4,6 @@
  *
  * @模块用途: emunTest
  *
- * @创建人: ligaoming
- *
  * @date: 2021/6/24 13:59
  *
  * @版权所有: PGLI
