@@ -3,7 +3,6 @@
  */
 import {compose} from "./compose";
 
-
 interface fnType<T> {
 	(arg: T): T;
 }
