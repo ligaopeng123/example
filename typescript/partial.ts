@@ -2,7 +2,6 @@
  * 偏应用函数
  */
 import {compose} from "./compose";
-
 interface fnType<T> {
 	(arg: T): T;
 }
