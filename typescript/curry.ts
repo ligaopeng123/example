@@ -78,10 +78,3 @@ console.log(addNum);
 const MultiplyNum = CurrieFn(multiply, 1)(1)(2)(3)(4);
 console.log(MultiplyNum);
 
-// defaultValue 默认值
-// 使用数组方便命名结构
-const [value,setValue] = useState(defaultValue);
-// 初始化执行后 value的值 只能通过setValue改变 通过传递props是无法改变的
-// value如果是父组件传递进来的化 只在初次渲染会复制 后续触发的更新不能修改value值
-// 也就是说value值只能通过setValue修改 父组件改变props.value触发的更新不会更新value值
-const [value,setValue] = useState(props.value);

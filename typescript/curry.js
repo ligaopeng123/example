@@ -1,23 +1,36 @@
-const curry = (fn) => {
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+var curry = function (fn) {
     if (typeof fn !== 'function') {
-        throw new Error(`${fn} is not a function`);
+        throw new Error(fn + " is not a function");
     }
     /**
      * 拼接参数
      * @private
      */
-    const g = (...args1) => {
+    var g = function () {
+        var args1 = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args1[_i] = arguments[_i];
+        }
         // 当g函数调用传递参数比fn本身参数少 则直接执行fn 并将结果返回
         if (args1.length >= fn.length)
-            return fn(...args1);
+            return fn.apply(void 0, args1);
         // 当g函数调用传递参数比fn本身参数多 则需要拼接缓存参数
-        return (...args2) => {
-            return g(...args1, ...args2);
+        return function () {
+            var args2 = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args2[_i] = arguments[_i];
+            }
+            return g.apply(void 0, __spreadArray(__spreadArray([], args1), args2));
         };
     };
     return g;
 };
-const add = (a, b) => {
+var add = function (a, b) {
     return a + b;
 };
 console.log(curry(add)(1)(2));
@@ -25,7 +38,7 @@ console.log(curry(add)(1)(2));
  *  相乘测试
  * @constructor
  */
-const multiply = function (x, y) {
+var multiply = function (x, y) {
     return x * y;
 };
 /**
@@ -33,12 +46,12 @@ const multiply = function (x, y) {
  * @param add  必须是一个函数
  * @returns {temp}
  */
-const CurrieFn = (fn, initialValue) => {
-    let sum = initialValue;
+var CurrieFn = function (fn, initialValue) {
+    var sum = initialValue;
     /**
      * 定义一个函数，抛出去供下次传参调用
      */
-    const temp = (x) => {
+    var temp = function (x) {
         sum = fn(sum, x);
         return temp;
     };
@@ -51,7 +64,7 @@ const CurrieFn = (fn, initialValue) => {
     };
     return temp;
 };
-const addNum = CurrieFn(add, 0)(1)(2)(3)(4);
+var addNum = CurrieFn(add, 0)(1)(2)(3)(4);
 console.log(addNum);
-const MultiplyNum = CurrieFn(multiply, 1)(1)(2)(3)(4);
+var MultiplyNum = CurrieFn(multiply, 1)(1)(2)(3)(4);
 console.log(MultiplyNum);
