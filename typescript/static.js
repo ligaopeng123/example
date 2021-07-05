@@ -3,17 +3,14 @@
  *
  * @模块名称: static
  *
- *
  * @模块用途: static
- *
- * @创建人: ligaoming
  *
  * @date: 2021/6/24 13:34
  *
  * @版权所有: PGLI
  *
  **********************************************************************/
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var StaticClass = /** @class */ (function () {
     function StaticClass() {
         var _this = this;
@@ -28,4 +25,4 @@ var StaticClass = /** @class */ (function () {
     };
     return StaticClass;
 }());
-exports["default"] = StaticClass;
+exports.default = StaticClass;
