@@ -2,7 +2,8 @@
   "name": "typescript",
   "version": "1.0.0",
   "type": "module",
-  "dependencies": {
-
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^16.3.3"
   }
 }

@@ -9,18 +9,28 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-interface fnType<T> {
-	(arg: T): T;
+/**
+ * 缓存函数
+ * @param fn
+ */
+interface Cache {
+	[propName: string]: any
 }
-const memoized = <fnType>(fn: (arg) => any) => {
+
+interface FN {
+	(arg: number | string): any
+}
+
+export const memoized = (fn: FN) => {
 	// 缓存求值 如果有则取缓存 如果没有则赋值
-	const cache: object = {};
-	return (arg) => {
+	const cache: Cache = {};
+	return function memoiz<FN>(arg: number | string): any {
 		return cache[arg] || (cache[arg] = fn(arg));
 	};
 };
 
-const square = <fnType>(n) => {
+
+const square: FN = (n: number) => {
 	if (!n) return 1;
 	return n * square(--n)
 };
@@ -29,4 +39,21 @@ const memoizedSquare = memoized(square);
 
 memoizedSquare(5);
 
+
+/**
+ * 异步缓存求值
+ * @param fn
+ */
+interface AsyncFN {
+	(arg: string): Promise<any>
+}
+
+export const asyncMemoized = (fn: AsyncFN) => {
+	// 缓存求值 如果有则取缓存 如果没有则赋值
+	const cache: Cache = {};
+	return async function memoiz<fnType>(arg: string): Promise<any> {
+		cache[arg] || (cache[arg] = await fn(arg));
+		return [cache[arg], cache];
+	};
+};
 
