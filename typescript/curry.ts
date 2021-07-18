@@ -9,6 +9,24 @@
  * @版权所有: pgli
  *
  **********************************************************************/
+
+
+// 闭包函数 需要一个函数作为入参 并返回一个函数
+function curryN(fn) {
+	return (fristArg)=> {
+		return (secondArg)=> {
+			return fn(fristArg, secondArg);
+		}
+	}
+}
+
+const sum = (x, y)=> {
+	return x + y;
+};
+
+const sum2 = curryN(sum);
+sum2(1)(2);
+
 type curryParams = (...args: Array<any>) => any;
 
 interface Curry<T> {

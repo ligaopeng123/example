@@ -1,8 +1,32 @@
+/**********************************************************************
+ *
+ * @模块名称: curry
+ *
+ * @模块用途: curry
+ *
+ * @date: 2021/6/29 8:29
+ *
+ * @版权所有: pgli
+ *
+ **********************************************************************/
 var __spreadArray = (this && this.__spreadArray) || function (to, from) {
     for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
         to[j] = from[i];
     return to;
 };
+// 闭包函数 需要一个函数作为入参 并返回一个函数
+function curryN(fn) {
+    return function (fristArg) {
+        return function (secondArg) {
+            return fn(fristArg, secondArg);
+        };
+    };
+}
+var sum = function (x, y) {
+    return x + y;
+};
+var sum2 = curryN(sum);
+sum2(1)(2);
 var curry = function (fn) {
     if (typeof fn !== 'function') {
         throw new Error(fn + " is not a function");
