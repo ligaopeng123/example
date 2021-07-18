@@ -10,6 +10,7 @@
  *
  **********************************************************************/
 // 1、延迟到需要求值的时候求值
+
 //
 /**
  * 2、惰性依赖，只需执行一次
@@ -27,17 +28,11 @@ const addEvent = <EventFn>(type, el, fn) => {
 
 let addEventInertia = <EventFn>(type, el, fn) => {
 	if (el.addEventListener) {
-		addEventInertia = <EventFn>(type, el, fn) => {
-			el.addEventListener(type, fn, false);
-		}
+		addEventInertia = <EventFn>(type, el, fn) => el.addEventListener(type, fn, false);
 	} else if (el.attachEvent) {
-		addEventInertia = <EventFn>(type, el, fn) => {
-			el.attachEvent('on' + type, fn);
-		}
+		addEventInertia = <EventFn>(type, el, fn) => el.attachEvent('on' + type, fn);
 	} else {
-		addEventInertia = <EventFn>(type, el, fn) => {
-			el['on' + type] = fn;
-		}
+		addEventInertia = <EventFn>(type, el, fn) => el['on' + type] = fn;
 	}
 	return addEventInertia(type, el, fn);
 };
