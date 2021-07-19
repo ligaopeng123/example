@@ -1,9 +1,14 @@
 {
   "name": "typescript",
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
+  "scripts": {
+    "test": "qunit"
+  },
   "dependencies": {},
   "devDependencies": {
-    "@types/node": "^16.3.3"
+    "@types/node": "^16.3.3",
+    "@types/qunit": "^2.11.2",
+    "qunit": "^2.16.0"
   }
 }

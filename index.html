@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+	<!--发送消息-->
+	const setMsg = function () {
+		// document.getElementById('iframe').contentWindow.postMessage({
+		// 	userId: 'test'
+		// }, '*');test
+	};
+
+	window.addEventListener('message', (e) => {
+		console.log(e.data);
+	});
+
+	alert(window.location.search)
+
+
+</script>
+<!--测试与mesapp的消息通信-->
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<div>测试页面</div>
+<button type="button" onclick="setMsg()">发送消息</button>
+</body>
+</html>

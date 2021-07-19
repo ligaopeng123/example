@@ -9,9 +9,30 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-// 1、延迟到需要求值的时候求值
 
-//
+/**
+ * 1、延迟到需要求值的时候求值
+ * range 生成随机数组
+ * take 获取其中的几个数据
+ */
+const range = (len: number): Array<number> => {
+	return new Array<number>(len).fill(0).map(_ => Math.ceil(Math.random() * 100));
+};
+
+const take = (arr: Array<any>, len: number): Array<number> => {
+	return new Array(len).fill(0).map((_, index) => arr[index]);
+};
+
+console.log(take(range(10), 3));
+
+const getTreeRangeArrayFromTenInertia = (range, take) => {
+	return (len: number) => {
+		return take(range(len), len)
+	}
+};
+
+getTreeRangeArrayFromTenInertia(range, take)(3);
+
 /**
  * 2、惰性依赖，只需执行一次
  */

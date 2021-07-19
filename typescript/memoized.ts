@@ -57,3 +57,7 @@ export const asyncMemoized = (fn: AsyncFN) => {
 	};
 };
 
+const getData: AsyncFN = async () => {
+	return await fetch('***')
+};
+const asyncMemoizedGetData = asyncMemoized(getData);

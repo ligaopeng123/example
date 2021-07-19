@@ -9,12 +9,12 @@
  * @版权所有: pgli
  *
  **********************************************************************/
-var ALLSTATE = []; // 保存所有的state
-var stateIndex = 0; // 标记state个数
-var _useState = function (initialValue) {
-    var currentIndex = stateIndex;
+const ALLSTATE = []; // 保存所有的state
+let stateIndex = 0; // 标记state个数
+const _useState = (initialValue) => {
+    const currentIndex = stateIndex;
     ALLSTATE[currentIndex] = ALLSTATE[currentIndex] || initialValue;
-    var setState = function (newValue) {
+    const setState = (newValue) => {
         ALLSTATE[currentIndex] = newValue;
         //调用render函数触发重新渲染
         // render();
@@ -23,13 +23,14 @@ var _useState = function (initialValue) {
     return [ALLSTATE[currentIndex], setState];
 };
 // 怎么销毁呢？fiber每个组件都有一个ALLSTATE
-var TestComponent = function (n) {
+const TestComponent = (n) => {
     stateIndex = 0;
-    var _a = _useState(n), state = _a[0], setState = _a[1];
-    setTimeout(function () {
+    const [state, setState] = _useState(n);
+    setTimeout(() => {
         console.log(state);
     }, 3000);
     setState(n++);
 };
 TestComponent(1);
 TestComponent(2);
+//# sourceMappingURL=useState.js.map

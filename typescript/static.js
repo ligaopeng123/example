@@ -11,18 +11,17 @@
  *
  **********************************************************************/
 Object.defineProperty(exports, "__esModule", { value: true });
-var StaticClass = /** @class */ (function () {
-    function StaticClass() {
-        var _this = this;
+class StaticClass {
+    constructor() {
         this.name = 'test';
-        this.getName = function () {
-            return _this.name;
+        this.getName = () => {
+            return this.name;
         };
     }
-    StaticClass.age = 4;
-    StaticClass.getAge = function () {
-        return StaticClass.age;
-    };
-    return StaticClass;
-}());
+}
+StaticClass.age = 4;
+StaticClass.getAge = () => {
+    return StaticClass.age;
+};
 exports.default = StaticClass;
+//# sourceMappingURL=static.js.map
