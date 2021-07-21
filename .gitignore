@@ -2,6 +2,7 @@
 /bin/electron-chubao-tool/node_modules
 /bin/electron-chubao-tool/out
 node_modules
+/node_modules
 /.idea
 /typescript/node_modules
 /typescript/node_modules/*
