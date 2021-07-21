@@ -6,9 +6,11 @@ node_modules
 /.idea
 /typescript/node_modules
 /typescript/node_modules/*
+/typescript/*.js
 .bin
 .idea
 .project
+.js.map
 .classpath
 .c9/
 *.launch
