@@ -6,6 +6,7 @@ function initVertexBuffers(gl) {
 
 }
 
+
 /**
  * 初始化着色器
  * @param gl
